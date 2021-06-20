@@ -1,0 +1,250 @@
+_type: export
+__export_format: 4
+__export_date: 2021-06-20T20:14:11.838Z
+__export_source: insomnia.desktop.app:v2021.3.0
+resources:
+  - _id: req_340fe9380deb4f42a2552b996fb87b13
+    parentId: fld_d3f862af26b742d983d0785aee4bd0ec
+    modified: 1623351949278
+    created: 1623003797045
+    url: "{{ _.baseUrl }}"
+    name: users
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"{\n  users {\n    id\n    name\n    rocket\n  }\n}\n"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88ad355af0ef4ae193df3b2c190ae664
+    authentication: {}
+    metaSortKey: -1622997615030
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d3f862af26b742d983d0785aee4bd0ec
+    parentId: wrk_d1535dad66f34793bfb637b403441275
+    modified: 1623003797040
+    created: 1623003797040
+    name: aula 04 - GraphQl unidade
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1000000000
+    _type: request_group
+  - _id: wrk_d1535dad66f34793bfb637b403441275
+    parentId: null
+    modified: 1623003679219
+    created: 1623003679219
+    name: testedeunidade.yaml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_b37f9f586a5b46629ae6a0582a9cbeb5
+    parentId: fld_d3f862af26b742d983d0785aee4bd0ec
+    modified: 1624219980475
+    created: 1623003797055
+    url: "{{ _.baseUrl }}"
+    name: user by pk
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: "{\"query\":\"query users($id_user: uuid!) {\\n  users_by_pk(id: $id_user)
+        {\\n    id\\n    name\\n   rocket\\n  }\\n}\\n\",\"variables\":{\"id_us\
+        er\":\"{% response 'body', 'req_aa8bb4fbd6764a52b13e5e69f65c91ed',
+        'b64::JC5kYXRhLnVzZXJzWzBdLmlk::46b', 'always', 60
+        %}\"},\"operationName\":\"users\"}"
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88ad355af0ef4ae193df3b2c190ae664
+    authentication: {}
+    metaSortKey: -1622750412224
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_d9421dfde51f49abc087c3706b9ca2586cb43661
+    parentId: wrk_d1535dad66f34793bfb637b403441275
+    modified: 1623003679469
+    created: 1623003679469
+    name: Base Environment
+    data:
+      base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1623003679470
+    _type: environment
+  - _id: jar_d9421dfde51f49abc087c3706b9ca2586cb43661
+    parentId: wrk_d1535dad66f34793bfb637b403441275
+    modified: 1623003679486
+    created: 1623003679486
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_dfca0f7a20524cdbb60f60a546809b65
+    parentId: wrk_d1535dad66f34793bfb637b403441275
+    modified: 1623694219467
+    created: 1623003679224
+    fileName: testedeunidade.yaml
+    contents: >-
+      openapi: 3.0.0
+
+      info:
+        title: Sample API
+        description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+        version: 0.1.9
+      servers:
+        - url: http://api.example.com/v1
+          description: Optional server description, e.g. Main (production) server
+        - url: http://staging-api.example.com
+          description: Optional server description, e.g. Internal staging server for testing
+      paths:
+        /users:
+          get:
+            summary: Returns a list of users.
+            description: Optional extended description in CommonMark or HTML.
+            responses:
+              '200':    # status code
+                description: A JSON array of user names
+                content:
+                  application/json:
+                    schema: 
+                      type: array
+                      items: 
+                        type: string
+        /users/{userId}:
+          get:
+            summary: Returns a user by ID.
+            parameters:
+              - name: userId
+                in: path
+                required: true
+                description: Parameter description in CommonMark or HTML.
+                schema:
+                  type : integer
+                  format: int64
+                  minimum: 1
+            responses: 
+              '200':
+                description: OK
+        /user:
+          post:
+            summary: Creates a user.
+            requestBody:
+              required: true
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+            responses: 
+              '201':
+                description: Created
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_9601a3b6c79c412b8a650c778a6c0e02
+    parentId: wrk_d1535dad66f34793bfb637b403441275
+    modified: 1623004329672
+    created: 1623004329672
+    name: SpaceX
+    _type: unit_test_suite
+  - _id: env_e46df8874d5b4ec9aa19162e6267d5a9
+    parentId: env_d9421dfde51f49abc087c3706b9ca2586cb43661
+    modified: 1623003877835
+    created: 1623003848617
+    name: SpaceX
+    data:
+      baseUrl: https://api.spacex.land/graphql/
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+    color: null
+    isPrivate: false
+    metaSortKey: 1623003848617
+    _type: environment
+  - _id: env_env_d9421dfde51f49abc087c3706b9ca2586cb43661_sub
+    parentId: env_d9421dfde51f49abc087c3706b9ca2586cb43661
+    modified: 1623694219455
+    created: 1623694219455
+    name: OpenAPI env
+    data:
+      scheme: http
+      base_path: /v1
+      host: api.example.com
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1623694219456
+    _type: environment
+  - _id: ut_5cd8aad396594694a228c3b63edbd777
+    parentId: uts_9601a3b6c79c412b8a650c778a6c0e02
+    modified: 1623004791497
+    created: 1623004384537
+    requestId: req_340fe9380deb4f42a2552b996fb87b13
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_5c5c312d506e4b5a9c22ef7c94abc585
+    parentId: uts_9601a3b6c79c412b8a650c778a6c0e02
+    modified: 1623004887284
+    created: 1623004882211
+    requestId: req_b37f9f586a5b46629ae6a0582a9cbeb5
+    name: Returns 200
+    code: |-
+      const response1 = await insomnia.send();
+      expect(response1.status).to.equal(200);
+    _type: unit_test
+  - _id: ut_c3482ce4bac94d5cbd747802ef2f809a
+    parentId: uts_9601a3b6c79c412b8a650c778a6c0e02
+    modified: 1623006161234
+    created: 1623005263869
+    requestId: req_b37f9f586a5b46629ae6a0582a9cbeb5
+    name: validar tipo do id
+    code: |-
+      const response = await insomnia.send();
+      const body = JSON.parse(response.data);
+
+      expect(body.data.users_by_pk.id).to.be.an('string');
+    _type: unit_test
+  - _id: ut_bbd63766795a400ab9344d29833d6559
+    parentId: uts_9601a3b6c79c412b8a650c778a6c0e02
+    modified: 1623007306876
+    created: 1623006185918
+    requestId: req_b37f9f586a5b46629ae6a0582a9cbeb5
+    name: validar name
+    code: >-
+      const response = await insomnia.send();
+
+      // console.log(response)
+
+      // console.log(response.data)
+
+      const body = JSON.parse(response.data);
+
+      // console.log(body)
+
+      console.log(body.data.users_by_pk.name)
+
+      console.log(expect(body.data.users_by_pk.name).to.be.an('string').but.not.an('null'))
+
+      expect(body.data.users_by_pk.name).to.be.an('string').but.not.an('null');
+    _type: unit_test
